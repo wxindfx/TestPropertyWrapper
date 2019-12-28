@@ -13,11 +13,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        self.test()
+        self.test()
     }
 
-//    func test(_ value: Foo = Foo()) {
-//      let _: Codable = value
-//    }
+    func test() {
+        let value = Foo()
+        print("test: \(value)")
+        
+        // Using codable cause compilation error;
+        if let data = try? JSONEncoder().encode(value),
+            let json = String.init(data: data, encoding: .utf8) {
+            print(json)
+        }
+    }
 }
 
